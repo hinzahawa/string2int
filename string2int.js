@@ -1,16 +1,18 @@
 
 const string2int = (input) =>{
-  let arr = [],sum = 0
-  for (let i = 0; i < 10 ;i++) {
-    arr.push(i.toString())
+  let sum = 0 ,pow = 0
+  for (let i = input.length - 1; i < input.length && i > -1; i--) {
+    const element = input[i]
+    if (isNumberCharacter(element)) {
+       sum += element * 10 ** pow++ 
+    }
   }
-  let checkstring = input.split("").reverse().filter((value)=>{
-    return arr.includes(value)
-  }).forEach((element,index) => {
-    sum +=  element * Math.pow((10),index)
-  });
-  return sum //573
+  return sum 
+}
+
+const isNumberCharacter = (c) => {
+  return c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9'
 }
 
 const input = 'a5b7c3'
-console.log(string2int(input))
+console.log(string2int(input)) //573
